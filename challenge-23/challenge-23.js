@@ -1,3 +1,5 @@
+(function(){
+    'use strict';
 /*
 Vamos desenvolver mais um projeto. A ideia é fazer uma mini-calculadora.
 As regras são:
@@ -23,3 +25,22 @@ multiplicação (x), então no input deve aparecer "1+2x".
 input;
 - Ao pressionar o botão "CE", o input deve ficar zerado.
 */
+
+
+var dataNum = document.querySelectorAll('[data-num]')
+
+
+dataNum.forEach(function(btn){
+    
+    const numberButton = document.querySelectorAll('[data-num]')
+    var inputNumber = document.querySelector('[data-js="input"]')
+    
+    btn.addEventListener('click', function(){
+        return inputNumber.value = numberButton.value
+        }
+    )
+});
+// console.log(num)
+
+
+})(document, window);
