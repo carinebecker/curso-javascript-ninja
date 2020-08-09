@@ -1,54 +1,89 @@
-/*
-Envolva todo o código desse desafio em uma IIFE.
-Crie um arquivo chamado index.html e adicione esse script ao HTML.
-*/
+(function () {
 
-/*
-Crie uma função construtora chamada "Person". Esse construtor deve ter
-as seguintes características:
-- Deve receber 3 parâmetros: `name`, `lastName` e `age`;
-- Deverá ter 3 propriedades:
-  - `name` - que receberá o valor do parâmetro `name`;
-  - `lastName` - que receberá o valor do parâmetro `lastName`;
-  - `age` - que receberá o valor do parâmetro `age`;
-- Deverá ter 3 métodos:
-  - `getFullName` - que deve retornar o nome completo do objeto criado,
-  no formato:
-    - "[NAME] [LASTNAME]"
-  - `getAge` - que deverá retornar a idade (age);
-  - `addAge` - esse método não deverá ter nenhum parâmetro, mas ao invocá-lo
-  iremos passar um único argumento, que é a quantidade de anos que devem ser
-  adicionados à idade original (age). Esse método deverá retornar o objeto
-  que será instanciado.
-*/
-// ?
+  /*
+  Envolva todo o código desse desafio em uma IIFE.
+  Crie um arquivo chamado index.html e adicione esse script ao HTML.
+  */
 
-/*
-Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
-pessoas. As variáveis deverão ser o primeiro nome da pessoa. Passe os
-parâmetros corretamente para o construtor para criar as novas pessoas.
-Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
-*/
-console.log( 'Novas pessoas criadas à partir de Person:' );
-// ?
+  /*
+  Crie uma função construtora chamada "Person". Esse construtor deve ter
+  as seguintes características:
+  - Deve receber 3 parâmetros: `name`, `lastName` e `age`;
+  - Deverá ter 3 propriedades:
+    - `name` - que receberá o valor do parâmetro `name`;
+    - `lastName` - que receberá o valor do parâmetro `lastName`;
+    - `age` - que receberá o valor do parâmetro `age`;
+  - Deverá ter 3 métodos:
+    - `getFullName` - que deve retornar o nome completo do objeto criado,
+    no formato:
+      - "[NAME] [LASTNAME]"
+    - `getAge` - que deverá retornar a idade (age);
+    - `addAge` - esse método não deverá ter nenhum parâmetro, mas ao invocá-lo
+    iremos passar um único argumento, que é a quantidade de anos que devem ser
+    adicionados à idade original (age). Esse método deverá retornar o objeto
+    que será instanciado.
+  */
 
-/*
-Mostre no console o nome completo de cada pessoa.
-*/
-console.log( '\nNomes das pessoas:' );
-// ?
+  // FUNÇÕES CONSTRUTORAS COMEÇAM COM LETRA MAIÚSCULA
+  function Person(name, lastName, age) {
+    this.name = name;
+    this.lastName = lastName;
+    this.age = age;
+    this.getFullName = function getFullName() {
+      return this.name + ' ' + this.lastName;
+    };
+    this.getAge = function getAge() {
+      return this.age
+    };
+    this.addAge = function addAge() {
+      this.age += arguments[0];
+      return this;
+    }
+  }
 
-/*
-Mostre no console as idades de cada pessoa, com a frase:
-- "[NOME COMPLETO] tem [IDADE] anos."
-*/
-console.log( '\nIdade das pessoas:' );
-// ?
+  /*
+  Crie 3 novos objetos usando o construtor acima. Os objetos serão novas
+  pessoas. As variáveis deverão ser o primeiro nome da pessoa. Passe os
+  parâmetros corretamente para o construtor para criar as novas pessoas.
+  Mostre as 3 novas pessoas criadas no console (Um console.log por pessoa).
+  */
+  console.log('Novas pessoas criadas à partir de Person:');
 
-/*
-Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
-cada um. A frase deverá ser no formato:
-- "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
-*/
-console.log( '\nNova idade das pessoas:' );
-// ?
+  var carine = new Person('Carine', 'Becker', 28)
+  var carlos = new Person('Carlos', 'Becker', 30)
+  var zakk = new Person('Zakk', 'Chinchilla', 7)
+
+  console.log(carine)
+  console.log(carlos)
+  console.log(zakk)
+
+  /*
+  Mostre no console o nome completo de cada pessoa.
+  */
+  console.log('\nNomes das pessoas:');
+
+  console.log(carine.getFullName())
+  console.log(carlos.getFullName())
+  console.log(zakk.getFullName())
+
+
+  /*
+  Mostre no console as idades de cada pessoa, com a frase:
+  - "[NOME COMPLETO] tem [IDADE] anos."
+  */
+  console.log('\nIdade das pessoas:');
+  console.log(` ${carine.getFullName()} tem ${carine.age} anos.`)
+  console.log(` ${carlos.getFullName()} tem ${carlos.age} anos.`)
+  console.log(` ${zakk.getFullName()} tem ${zakk.age} anos.`)
+
+  /*
+  Adicione alguns anos à cada pessoa, e mostre no console a nova idade de
+  cada um. A frase deverá ser no formato:
+  - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
+  */
+  console.log('\nNova idade das pessoas:');
+  console.log(` ${carine.getFullName()} agora tem ${carine.addAge(5).getAge()} anos.`) // O formato de encadeamento pode ser usado se for retornado um objeto
+  console.log(` ${carlos.getFullName()} agora tem ${carlos.addAge(-5).getAge()} anos.`)
+  console.log(` ${zakk.getFullName()} agora tem ${zakk.addAge(2).getAge()} anos.`)
+
+})();
